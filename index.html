@@ -5,162 +5,145 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>I ALMOST LOST IT by Gabriel Kokan</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Updated body styles for mobile responsiveness */
-body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #121212;
-  color: white;
-  margin: 0;
-  padding-bottom: 160px; /* space for sticky player */
-  background-image: url('cover.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  filter: blur(10px);
-  animation: zoom 30s ease-in-out infinite alternate;
-}
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding-bottom: 160px;
+            /* space for sticky player */
+            color: white;
+            position: relative;
+            z-index: 1;
+        }
 
-/* Keyframes for zoom animation */
-@keyframes zoom {
-  from { transform: scale(1); }
-  to { transform: scale(1.1); }
-}
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('./i-almost-lost-it/bck.png') no-repeat center center / cover;
+            filter: blur(20px) brightness(0.35);
+            z-index: -1;
+            animation: zoom 30s infinite alternate ease-in-out;
+        }
 
-/* Body background styling with blurred cover */
-body::before {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: inherit;
-  filter: blur(20px) brightness(0.4);
-  z-index: -1;
-}
+        @keyframes zoom {
+            0% {
+                transform: scale(1.5);
+            }
 
-/* Updated player-container for mobile responsiveness */
-.player-container {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: linear-gradient(145deg, #1f1f1f, #2c2c2c);
-  padding: 20px;
-  border-top-left-radius: 20px;
-  border-top-right-radius: 20px;
-  box-shadow: 0 -6px 20px rgba(0, 0, 0, 0.8);
-  max-width: 700px;
-  width: 100%;
-  margin: 0 auto;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 15px;
-  align-items: center;
-  box-sizing: border-box;
-}
+            100% {
+                transform: scale(2);
+            }
+        }
 
-/* Cover image styling */
-.cover {
-  width: 80px;
-  height: 80px;
-  object-fit: cover;
-  border-radius: 10px;
-  flex-shrink: 0;
-}
+        .player-container {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(145deg, #1f1f1f, #2c2c2c);
+            padding: 20px;
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+            box-shadow: 0 -6px 20px rgba(0, 0, 0, 0.8);
+            max-width: 700px;
+            width: 89%;
+            margin: 0 auto;
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
 
-/* Tracklist container */
-.tracklist {
-  margin: 20px auto;
-  max-width: 700px;
-  padding: 0 20px;
-}
+        .cover {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 10px;
+            flex-shrink: 0;
+        }
 
-/* Track item styling */
-.track {
-  cursor: pointer;
-  padding: 12px 15px;
-  margin: 5px 0;
-  background-color: #1e1e1e;
-  border-radius: 10px;
-  transition: background 0.3s;
-}
+        .tracklist {
+            margin: 20px auto;
+            max-width: 700px;
+            padding: 0 20px;
+        }
 
-.track:hover, .track.active {
-  background-color: #333;
-}
+        .track {
+            cursor: pointer;
+            padding: 12px 15px;
+            margin: 5px 0;
+            background-color: #1e1e1e;
+            border-radius: 10px;
+            transition: background 0.3s;
+        }
 
-/* Controls section styling */
-.controls {
-  flex: 1 1 250px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
+        .track:hover,
+        .track.active {
+            background-color: #333;
+        }
 
-/* Button container */
-.buttons {
-  display: flex;
-  justify-content: space-between;
-}
+        .controls {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
 
-/* Progress and volume sliders */
-.progress, .volume {
-  width: 100%;
-}
+        .buttons {
+            display: flex;
+            justify-content: space-between;
+        }
 
-/* Label styling */
-.label {
-  font-size: 0.9em;
-  color: #aaa;
-}
+        .progress,
+        .volume {
+            width: 100%;
+        }
 
-/* Button styling */
-button {
-  background-color: #292929;
-  border: none;
-  padding: 10px 15px;
-  border-radius: 8px;
-  color: white;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background 0.2s ease;
-}
+        .label {
+            font-size: 0.9em;
+            color: #aaa;
+        }
 
-button:hover {
-  background-color: #3a3a3a;
-}
+        button {
+            background-color: #292929;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 8px;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+        }
 
-/* Slider styling */
-input[type="range"] {
-  appearance: none;
-  height: 4px;
-  background: #444;
-  border-radius: 2px;
-  outline: none;
-}
+        button:hover {
+            background-color: #3a3a3a;
+        }
 
-input[type="range"]::-webkit-slider-thumb {
-  appearance: none;
-  width: 12px;
-  height: 12px;
-  background: white;
-  border-radius: 50%;
-  cursor: pointer;
-}
+        input[type="range"] {
+            appearance: none;
+            height: 4px;
+            background: #444;
+            border-radius: 2px;
+            outline: none;
+        }
 
-/* Mobile responsive adjustments */
-@media (max-width: 480px) {
-  .player-container {
-    flex-direction: column;
-    align-items: stretch;
-  }
-  .controls {
-    width: 100%;
-  }
-}
-
+        input[type="range"]::-webkit-slider-thumb {
+            appearance: none;
+            width: 12px;
+            height: 12px;
+            background: white;
+            border-radius: 50%;
+            cursor: pointer;
+        }
     </style>
     <link rel="icon" href="./i-almost-lost-it/d1679e94a0322bd89ef72e68b1589c7e28cb33f1.png">
 </head>
@@ -176,8 +159,8 @@ input[type="range"]::-webkit-slider-thumb {
         <div class="controls">
             <input type="range" id="progress" class="progress" value="0" min="0" max="100">
             <div class="buttons">
-                <button id="playPause">Play</button>
-                <button id="loop">Loop Off</button>
+                <button id="playPause"><i class="fas fa-play"></i></button>
+                <button id="loop"><i class="fas fa-redo"></i></button>
             </div>
             <label class="label">Volume
                 <input type="range" id="volume" class="volume" min="0" max="1" step="0.01" value="1">
@@ -215,7 +198,7 @@ input[type="range"]::-webkit-slider-thumb {
             div.addEventListener('click', () => {
                 setTrack(index);
                 audio.play();
-                playPauseBtn.textContent = 'Pause';
+                playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
             });
             tracklist.appendChild(div);
         });
@@ -235,16 +218,16 @@ input[type="range"]::-webkit-slider-thumb {
         playPauseBtn.addEventListener('click', () => {
             if (audio.paused) {
                 audio.play();
-                playPauseBtn.textContent = 'Pause';
+                playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
             } else {
                 audio.pause();
-                playPauseBtn.textContent = 'Play';
+                playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
             }
         });
 
         loopBtn.addEventListener('click', () => {
             audio.loop = !audio.loop;
-            loopBtn.textContent = audio.loop ? 'Loop On' : 'Loop Off';
+            loopBtn.style.color = audio.loop ? '#1DB954' : 'white';
         });
 
         volumeSlider.addEventListener('input', () => {
@@ -264,6 +247,7 @@ input[type="range"]::-webkit-slider-thumb {
                 currentTrackIndex = (currentTrackIndex + 1) % songs.length;
                 setTrack(currentTrackIndex);
                 audio.play();
+                playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
             }
         });
 
