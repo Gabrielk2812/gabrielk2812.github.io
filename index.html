@@ -6,148 +6,161 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>I ALMOST LOST IT by Gabriel Kokan</title>
     <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding-bottom: 160px;
-            /* space for sticky player */
-            color: white;
-            position: relative;
-            z-index: 1;
-        }
+        /* Updated body styles for mobile responsiveness */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #121212;
+  color: white;
+  margin: 0;
+  padding-bottom: 160px; /* space for sticky player */
+  background-image: url('cover.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: blur(10px);
+  animation: zoom 30s ease-in-out infinite alternate;
+}
 
-        body::before {
-            content: "";
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('./i-almost-lost-it/bck.png') no-repeat center center / cover;
-            filter: blur(20px) brightness(0.35);
-            z-index: -1;
-            animation: zoom 30s infinite alternate ease-in-out;
-        }
+/* Keyframes for zoom animation */
+@keyframes zoom {
+  from { transform: scale(1); }
+  to { transform: scale(1.1); }
+}
 
-        @keyframes zoom {
-            0% {
-                transform: scale(1.5);
-            }
+/* Body background styling with blurred cover */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: inherit;
+  filter: blur(20px) brightness(0.4);
+  z-index: -1;
+}
 
-            100% {
-                transform: scale(2);
-            }
-        }
+/* Updated player-container for mobile responsiveness */
+.player-container {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(145deg, #1f1f1f, #2c2c2c);
+  padding: 20px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  box-shadow: 0 -6px 20px rgba(0, 0, 0, 0.8);
+  max-width: 700px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  align-items: center;
+  box-sizing: border-box;
+}
 
-        .player-container {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(145deg, #1f1f1f, #2c2c2c);
-            padding: 20px;
-            border-top-left-radius: 20px;
-            border-top-right-radius: 20px;
-            box-shadow: 0 -6px 20px rgba(0, 0, 0, 0.8);
-            max-width: 700px;
-            width: 100%;
-            margin: 0 auto;
-            display: flex;
-            gap: 15px;
-            align-items: center;
-        }
+/* Cover image styling */
+.cover {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 10px;
+  flex-shrink: 0;
+}
 
-        .cover {
-            width: 80px;
-            height: 80px;
-            object-fit: cover;
-            border-radius: 10px;
-            flex-shrink: 0;
-        }
+/* Tracklist container */
+.tracklist {
+  margin: 20px auto;
+  max-width: 700px;
+  padding: 0 20px;
+}
 
-        .tracklist {
-            margin: 20px auto;
-            max-width: 700px;
-            padding: 0 20px;
-        }
+/* Track item styling */
+.track {
+  cursor: pointer;
+  padding: 12px 15px;
+  margin: 5px 0;
+  background-color: #1e1e1e;
+  border-radius: 10px;
+  transition: background 0.3s;
+}
 
-        .track {
-            cursor: pointer;
-            padding: 12px 15px;
-            margin: 5px 0;
-            background-color: #1e1e1e;
-            border-radius: 10px;
-            transition: background 0.3s;
-        }
+.track:hover, .track.active {
+  background-color: #333;
+}
 
-        .track:hover,
-        .track.active {
-            background-color: #333;
-        }
+/* Controls section styling */
+.controls {
+  flex: 1 1 250px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
 
-        .controls {
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
+/* Button container */
+.buttons {
+  display: flex;
+  justify-content: space-between;
+}
 
-        .buttons {
-            display: flex;
-            justify-content: space-between;
-        }
+/* Progress and volume sliders */
+.progress, .volume {
+  width: 100%;
+}
 
-        .progress,
-        .volume {
-            width: 100%;
-        }
+/* Label styling */
+.label {
+  font-size: 0.9em;
+  color: #aaa;
+}
 
-        .label {
-            font-size: 0.9em;
-            color: #aaa;
-        }
+/* Button styling */
+button {
+  background-color: #292929;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 8px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
 
-        button {
-            background-color: #292929;
-            border: none;
-            padding: 10px 15px;
-            border-radius: 8px;
-            color: white;
-            font-weight: bold;
-            cursor: pointer;
-            transition: background 0.2s ease;
-        }
+button:hover {
+  background-color: #3a3a3a;
+}
 
-        button:hover {
-            background-color: #3a3a3a;
-        }
+/* Slider styling */
+input[type="range"] {
+  appearance: none;
+  height: 4px;
+  background: #444;
+  border-radius: 2px;
+  outline: none;
+}
 
-        input[type="range"] {
-            appearance: none;
-            height: 4px;
-            background: #444;
-            border-radius: 2px;
-            outline: none;
-        }
+input[type="range"]::-webkit-slider-thumb {
+  appearance: none;
+  width: 12px;
+  height: 12px;
+  background: white;
+  border-radius: 50%;
+  cursor: pointer;
+}
 
-        input[type="range"]::-webkit-slider-thumb {
-            appearance: none;
-            width: 12px;
-            height: 12px;
-            background: white;
-            border-radius: 50%;
-            cursor: pointer;
-        }
+/* Mobile responsive adjustments */
+@media (max-width: 480px) {
+  .player-container {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .controls {
+    width: 100%;
+  }
+}
 
-        @media (max-width: 480px) {
-          .player-container {
-            flex-direction: column;
-            align-items: stretch;
-          }
-          .controls {
-            width: 100%;
-          }
-        }
     </style>
     <link rel="icon" href="./i-almost-lost-it/d1679e94a0322bd89ef72e68b1589c7e28cb33f1.png">
 </head>
