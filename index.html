@@ -51,7 +51,7 @@
             border-top-right-radius: 20px;
             box-shadow: 0 -6px 20px rgba(0, 0, 0, 0.8);
             max-width: 700px;
-            width: 89%;
+            width: 100%;
             margin: 0 auto;
             display: flex;
             gap: 15px;
@@ -79,11 +79,37 @@
             background-color: #1e1e1e;
             border-radius: 10px;
             transition: background 0.3s;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
         .track:hover,
         .track.active {
             background-color: #333;
+        }
+
+        .track-info {
+            flex-grow: 1;
+        }
+
+        .track-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .download-btn {
+            background: none;
+            border: none;
+            color: #aaa;
+            cursor: pointer;
+            font-size: 16px;
+            transition: color 0.2s;
+            padding: 5px;
+        }
+
+        .download-btn:hover {
+            color: white;
         }
 
         .controls {
@@ -191,16 +217,45 @@
 
         let currentTrackIndex = 0;
 
+        // Function to download a file
+        function downloadFile(url, filename) {
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = filename || 'download';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        }
+
         songs.forEach((song, index) => {
-            const div = document.createElement('div');
-            div.className = 'track';
-            div.textContent = song.title;
-            div.addEventListener('click', () => {
+            const trackDiv = document.createElement('div');
+            trackDiv.className = 'track';
+            
+            const trackInfo = document.createElement('div');
+            trackInfo.className = 'track-info';
+            trackInfo.textContent = song.title;
+            trackInfo.addEventListener('click', () => {
                 setTrack(index);
                 audio.play();
                 playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
             });
-            tracklist.appendChild(div);
+            
+            const trackActions = document.createElement('div');
+            trackActions.className = 'track-actions';
+            
+            const downloadBtn = document.createElement('button');
+            downloadBtn.className = 'download-btn';
+            downloadBtn.innerHTML = '<i class="fas fa-download"></i>';
+            downloadBtn.title = 'Download';
+            downloadBtn.addEventListener('click', (e) => {
+                e.stopPropagation(); // Prevent triggering the track play
+                downloadFile(song.file, song.title + '.mp3');
+            });
+            
+            trackActions.appendChild(downloadBtn);
+            trackDiv.appendChild(trackInfo);
+            trackDiv.appendChild(trackActions);
+            tracklist.appendChild(trackDiv);
         });
 
         function setTrack(index) {
@@ -251,6 +306,7 @@
             }
         });
 
+        // Initialize first song
         setTrack(0);
     </script>
 </body>
