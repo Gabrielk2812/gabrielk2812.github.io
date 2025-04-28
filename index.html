@@ -21,7 +21,7 @@
             position: relative;
             z-index: 1;
         }
-
+    
         body::before {
             content: "";
             position: fixed;
@@ -34,8 +34,8 @@
             z-index: -1;
             animation: zoom 30s infinite alternate ease-in-out;
         }
-
-        body:has(.expanded-player.active){
+    
+        body:has(.expanded-player.active) {
             overflow: hidden;
         }
 
@@ -48,34 +48,34 @@
                 transform: scale(2);
             }
         }
-
+    
         /* Header Styles */
         .header {
             text-align: center;
             padding: 30px 20px 20px;
             margin-bottom: 10px;
         }
-
+    
         .header h1 {
             font-size: 2.5rem;
             margin: 0;
             letter-spacing: 1px;
         }
-
+    
         .header h2 {
             font-size: 1.5rem;
             margin: 5px 0 0;
             color: rgba(255, 255, 255, 0.8);
             font-weight: normal;
         }
-
-        /* Main Tracklist Styles */
+    
+        /* Tracklist Styles */
         .tracklist-container {
             margin: 40px auto;
             max-width: 700px;
             padding: 0 20px;
         }
-
+    
         .tracklist-header {
             display: flex;
             justify-content: space-between;
@@ -84,49 +84,41 @@
             padding-bottom: 10px;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
-
-        .tracklist-title {
-            font-size: 24px;
-            font-weight: bold;
-            margin: 0;
-        }
-
+    
         .track-count {
             color: #aaa;
             font-size: 14px;
         }
-
+    
         .tracklist {
             background: rgba(30, 30, 30, 0.7);
             border-radius: 15px;
             padding: 15px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-            backdrop-filter: blur(5px);
+            backdrop-filter: blur(2px);
         }
-
+    
         .track {
             cursor: pointer;
             padding: 15px;
             margin: 8px 0;
             background-color: rgba(40, 40, 40, 0.7);
             border-radius: 10px;
-            transition: all 0.3s;
             display: flex;
             justify-content: space-between;
             align-items: center;
             border-left: 3px solid transparent;
+            transition: background-color 0.2s;
         }
-
+    
         .track:hover {
             background-color: rgba(60, 60, 60, 0.7);
-            transform: translateX(5px);
         }
-
+    
         .track.active {
             background-color: rgba(80, 80, 80, 0.7);
             border-left: 3px solid #dbdbdb;
         }
-
+    
         .track-number {
             color: #aaa;
             width: 25px;
@@ -134,24 +126,24 @@
             margin-right: 15px;
             font-size: 14px;
         }
-
+    
         .track-info {
             flex-grow: 1;
             font-size: 16px;
         }
-
+    
         .track-actions {
             display: flex;
             gap: 10px;
             align-items: center;
         }
-
+    
         .track-duration {
             color: #aaa;
             font-size: 14px;
             margin-right: 10px;
         }
-
+    
         .download-btn {
             background: none;
             border: none;
@@ -161,12 +153,12 @@
             transition: color 0.2s;
             padding: 5px;
         }
-
+    
         .download-btn:hover {
             color: white;
         }
-
-        /* Mini Player Styles */
+    
+        /* Player Styles */
         .player-container {
             position: fixed;
             bottom: 0;
@@ -176,7 +168,6 @@
             padding: 20px;
             border-top-left-radius: 20px;
             border-top-right-radius: 20px;
-            box-shadow: 0 -6px 20px rgba(0, 0, 0, 0.8);
             max-width: 700px;
             width: 89%;
             margin: 0 auto;
@@ -185,7 +176,7 @@
             align-items: center;
             z-index: 100;
         }
-
+    
         .cover {
             width: 80px;
             height: 80px;
@@ -193,63 +184,46 @@
             border-radius: 10px;
             flex-shrink: 0;
             cursor: pointer;
-            transition: transform 0.2s;
         }
-
-        .cover:hover {
-            transform: scale(1.05);
-        }
-
+    
         .controls {
             flex-grow: 1;
             display: flex;
             flex-direction: column;
             gap: 10px;
         }
-
+    
         .buttons {
             display: flex;
             justify-content: space-between;
         }
-
-        .progress,
-        .volume {
-            width: 100%;
-        }
-
-        .label {
-            font-size: 0.9em;
-            color: #aaa;
-        }
-
+    
         button {
             background-color: #292929;
             border: none;
             padding: 10px 15px;
             border-radius: 8px;
             color: white;
-            font-weight: bold;
             cursor: pointer;
-            transition: background 0.2s ease;
             display: flex;
             align-items: center;
             justify-content: center;
             width: 40px;
             height: 40px;
         }
-
+    
         button:hover {
             background-color: #3a3a3a;
         }
-
+    
         input[type="range"] {
             appearance: none;
-            height: 4px;
-            background: #444;
+            height: 3px;
+            background: rgba(255, 255, 255, 0.1);
             border-radius: 2px;
             outline: none;
         }
-
+    
         input[type="range"]::-webkit-slider-thumb {
             appearance: none;
             width: 12px;
@@ -258,8 +232,8 @@
             border-radius: 50%;
             cursor: pointer;
         }
-
-        /* Expanded Player Styles */
+    
+        /* Expanded Player */
         .expanded-player {
             position: fixed;
             top: 0;
@@ -273,14 +247,14 @@
             align-items: center;
             justify-content: center;
             padding: 20px;
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(5px);
         }
-
+    
         .expanded-player.active {
             display: flex;
-            overflow:hidden;
+            overflow: hidden;
         }
-
+    
         .close-expanded {
             position: absolute;
             top: 20px;
@@ -292,7 +266,7 @@
             cursor: pointer;
             z-index: 1001;
         }
-
+    
         .expanded-player-content {
             width: 90%;
             max-width: 500px;
@@ -301,13 +275,7 @@
             align-items: center;
             gap: 30px;
         }
-
-        .expanded-player-meta {
-            text-align: center;
-            width: 100%;
-            margin-bottom: 20px;
-        }
-
+    
         .expanded-cover {
             width: 100%;
             max-width: 300px;
@@ -316,35 +284,30 @@
             object-fit: cover;
             border-radius: 15px;
             margin-bottom: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
         }
-
+    
         .expanded-player-title {
             font-size: 2rem;
             margin-bottom: 5px;
         }
-
+    
         .expanded-player-artist {
             font-size: 1.3rem;
             color: rgba(255, 255, 255, 0.8);
             margin-bottom: 10px;
         }
-
+    
         .now-playing {
             font-size: 1.5rem;
             margin-bottom: 5px;
             font-weight: bold;
         }
-
-        .expanded-player-controls {
-            width: 100%;
-        }
-
+    
         .expanded-progress {
             width: 100%;
             margin: 20px 0;
         }
-
+    
         .time-display {
             display: flex;
             justify-content: space-between;
@@ -353,38 +316,28 @@
             font-size: 0.9rem;
             color: #aaa;
         }
-
+    
         .expanded-buttons {
             display: flex;
             justify-content: center;
             gap: 20px;
             margin-bottom: 20px;
         }
-
+    
         .expanded-buttons button {
             width: 50px;
             height: 50px;
             font-size: 24px;
-            transition: all 0.2s;
         }
-
-        .expanded-buttons button:hover {
-            transform: scale(1.1);
-            background-color: #3a3a3a;
-        }
-
-        .expanded-volume {
-            width: 100%;
-            margin-top: 20px;
-        }
-
+    
+        /* Social Links */
         .social-share {
             display: flex;
             justify-content: center;
             gap: 15px;
             margin-top: 20px;
         }
-
+    
         .share-btn {
             background: rgba(255, 255, 255, 0.1);
             border: none;
@@ -394,29 +347,27 @@
             color: white;
             font-size: 18px;
             cursor: pointer;
-            transition: all 0.3s;
             display: flex;
             align-items: center;
             justify-content: center;
         }
-
+    
         .share-btn:hover {
-            transform: scale(1.1);
             background: rgba(255, 255, 255, 0.2);
         }
-
+    
         .facebook-btn:hover {
             background-color: #3b5998;
         }
-
+    
         .twitter-btn:hover {
             background-color: #1DA1F2;
         }
-
+    
         .whatsapp-btn:hover {
             background-color: #25D366;
         }
-
+    
         .telegram-btn:hover {
             background-color: #0088cc;
         }
@@ -445,7 +396,7 @@
     </div>
 
     <div class="player-container">
-        <img src="./i-almost-lost-it/DELUX cvr2.png" alt="Album Cover" class="cover"
+        <img src="./i-almost-lost-it/DELUX BCKG.png" alt="Album Cover" class="cover"
             id="cover" />
         <audio id="audio" preload="auto"></audio>
         <div class="controls">
@@ -454,7 +405,7 @@
                 <button id="playPause"><i class="fas fa-play"></i></button>
                 <button id="loop"><i class="fas fa-redo"></i></button>
             </div>
-            <label class="label">Volume
+            <label class="label"><i class="fa-solid fa-volume-high"></i>
                 <input type="range" id="volume" class="volume" min="0" max="1" step="0.01" value="1">
             </label>
         </div>
@@ -465,7 +416,7 @@
         <button class="close-expanded" id="closeExpanded"><i class="fas fa-times"></i></button>
         <div class="expanded-player-content">
             <div class="expanded-player-meta">
-                <img src="./i-almost-lost-it/DELUX cvr2.png" alt="Album Cover"
+                <img src="./i-almost-lost-it/DELUX BCKG.png" alt="Album Cover"
                     class="expanded-cover" id="expandedCover" />
                 <h1 class="expanded-player-title">VAGRANT</h1>
                 <h2 class="expanded-player-artist">Gabriel Kokan</h2>
@@ -484,7 +435,7 @@
                     <button id="nextButton" title="Next"><i class="fas fa-step-forward"></i></button>
                     <button id="expandedLoop"><i class="fas fa-redo"></i></button>
                 </div>
-                <label class="label">Volume
+                <label class="label"><i class="fa-solid fa-volume-high"></i>
                     <input type="range" id="expandedVolume" class="expanded-volume" min="0" max="1" step="0.01"
                         value="1">
                 </label>
