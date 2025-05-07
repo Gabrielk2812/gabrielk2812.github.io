@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="keywords" content="Gabriel Kokan, gkweb, out of spite, gk3, prodbygk">
-    <meta name="description" content="WELCOME TO THE GK WEB">
+    <meta name="description" content="Gabriel Kokan's Portfolio">
     <title>GK WEB</title>
     <link rel="icon" href="./Black.png">
     <style>
@@ -25,7 +25,6 @@
             height: 100%;
             object-fit: cover;
         }
-
 
         body {
             margin: 0;
@@ -66,76 +65,8 @@
             text-align: center;
         }
 
-        .subscription-form {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 15px;
-            margin-top: 20px;
-        }
-
-        input[type="email"] {
-            padding: 10px 20px;
-            font-size: 1em;
-            border: 2px solid white;
-            border-radius: 25px;
-            background: transparent;
-            color: white;
-            width: 300px;
-        }
-
-        button {
-            padding: 12px 30px;
-            background: white;
-            color: black;
-            border: none;
-            border-radius: 25px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: opacity 0.3s;
-        }
-
-        button:hover {
-            opacity: 0.8;
-        }
-
-        .terms-dropdown {
-            margin-top: 40px;
-            border-top: 1px solid rgba(255, 255, 255, 0.2);
-            padding: 20px 0;
-            width: 100%;
-            max-width: 600px;
+        .announcement h2{
             text-align: center;
-        }
-
-        .terms-dropdown details {
-            cursor: pointer;
-            font-size: 0.9em;
-            color: #888;
-        }
-
-        .terms-dropdown details[open] {
-            color: white;
-        }
-
-        .terms-dropdown summary {
-            outline: none;
-            padding: 10px;
-        }
-
-        .terms-dropdown div {
-            padding: 15px;
-            text-align: left;
-            font-size: 0.8em;
-            line-height: 1.5;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            margin-top: 10px;
-        }
-
-        .terms-dropdown strong {
-            display: block;
-            margin: 10px 0 5px;
-            color: #fff;
         }
 
         footer {
@@ -146,18 +77,6 @@
             color: #888;
             width: 100%;
             max-width: 800px;
-        }
-
-        footer span {
-            display: inline-block;
-            line-height: 1.4;
-        }
-
-        @media (max-width: 768px) {
-            footer {
-                padding: 20px 15px;
-                font-size: 0.7em;
-            }
         }
 
         @media (max-width: 768px) {
@@ -174,14 +93,9 @@
                 font-size: 1.2em;
                 padding: 0 15px;
             }
-
-            input[type="email"] {
-                width: 100%;
-                max-width: 300px;
-            }
         }
     </style>
-     <meta name="google-site-verification" content="K5lR4YBtET8dKPfC0WRp9U3liIA1Q7mNu9DxNUgQJLo" />
+    <meta name="google-site-verification" content="K5lR4YBtET8dKPfC0WRp9U3liIA1Q7mNu9DxNUgQJLo" />
 </head>
 
 <body>
@@ -193,64 +107,20 @@
 
     <div class="content-wrapper">
         <div class="albumdisplay">
-            <img src="./out of spite cover 1.jpg" alt="cover for the upcoming album">
-            <img src="./out of spite tracklist v1.jpg" alt="version 1 of the tracklist">
+            <img src="./out of spite cover 1.jpg" alt="Album cover art">
+            <img src="./out of spite tracklist v1.jpg" alt="Album tracklist">
         </div>
 
-        <h4>OUT OF SPITE - EXCLUSIVELY ON THE GK WEB</h4>
-        <h4>26 05 2025 - 9 AM CET</h4>
-
-        <form class="subscription-form" action="https://formspree.io/f/movddoqy" method="POST">
-            <input type="email" name="email" placeholder="Enter email for updates" required>
-            <button type="submit">Pre Save</button>
-        </form>
-        <div class="success-message" style="display: none; color: green; margin-top: 10px;">
-            Thanks for pre saving!
-        </div>
-        <div class="terms-dropdown">
-            <details>
-                <summary>Privacy & Terms</summary>
-                <div>
-                    <strong>Data Collection Notice:</strong>
-                    <p>We only collect the email address you provide for updates. This information will not be shared
-                        with any third parties.</p>
-
-                    <strong>Service Provider:</strong>
-                    <p>We use Formspree to handle email subscriptions. By submitting your email, you acknowledge that
-                        your data will be processed through Formspree's platform.</p>
-                </div>
-            </details>
+        <div class="announcement">
+            <h2>OUT OF SPITE - EXCLUSIVELY ON THE GK WEB</h2>
+            <h2>26.5.2025 9 AM CET</h2>
         </div>
 
         <footer>
-            <span>&copy; 2025 Gabriel Kokan. All content and materials presented on this website are protected under
+            <span>&copy; 2024 Gabriel Kokan. All content and materials presented on this website are protected under
                 applicable intellectual property laws. Unauthorized use or reproduction is prohibited.</span>
         </footer>
     </div>
-
-    <script>
-        const form = document.querySelector('.subscription-form');
-        form.addEventListener('submit', async (e) => {
-            e.preventDefault();
-
-            try {
-                const response = await fetch(form.action, {
-                    method: 'POST',
-                    body: new FormData(form),
-                    headers: {
-                        'Accept': 'application/json'
-                    }
-                });
-
-                if (response.ok) {
-                    form.reset();
-                    document.querySelector('.success-message').style.display = 'block';
-                }
-            } catch (error) {
-                console.error('Error:', error);
-            }
-        });
-    </script>
 </body>
 
 </html>
