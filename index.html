@@ -9,16 +9,36 @@
     <title>GK WEB</title>
     <link rel="icon" href="./Black.png">
     <style>
+        .video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            filter: blur(4px);
+            overflow: hidden;
+        }
+
+        .video-background video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+
         body {
             margin: 0;
             padding: 0;
-            background-color: black;
             min-height: 100vh;
             color: white;
             font-family: Arial, sans-serif;
+            position: relative;
         }
 
         .content-wrapper {
+            position: relative;
+            background: rgba(0, 0, 0, 0.7);
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -161,10 +181,16 @@
             }
         }
     </style>
-    <meta name="google-site-verification" content="K5lR4YBtET8dKPfC0WRp9U3liIA1Q7mNu9DxNUgQJLo" />
+     <meta name="google-site-verification" content="K5lR4YBtET8dKPfC0WRp9U3liIA1Q7mNu9DxNUgQJLo" />
 </head>
 
 <body>
+    <div class="video-background">
+        <video autoplay muted loop playsinline poster="./Black.png">
+            <source src="./oosvis1_2.mp4" type="video/mp4">
+        </video>
+    </div>
+
     <div class="content-wrapper">
         <div class="albumdisplay">
             <img src="./out of spite cover 1.jpg" alt="cover for the upcoming album">
@@ -176,10 +202,10 @@
 
         <form class="subscription-form" action="https://formspree.io/f/movddoqy" method="POST">
             <input type="email" name="email" placeholder="Enter email for updates" required>
-            <button type="submit">Subscribe</button>
+            <button type="submit">Pre Save</button>
         </form>
         <div class="success-message" style="display: none; color: green; margin-top: 10px;">
-            Thanks for subscribing!
+            Thanks for pre saving!
         </div>
         <div class="terms-dropdown">
             <details>
@@ -197,7 +223,8 @@
         </div>
 
         <footer>
-            <span>&copy; 2025 Gabriel Kokan. All content and materials presented on this website are protected under applicable intellectual property laws. Unauthorized use or reproduction is prohibited.</span>
+            <span>&copy; 2025 Gabriel Kokan. All content and materials presented on this website are protected under
+                applicable intellectual property laws. Unauthorized use or reproduction is prohibited.</span>
         </footer>
     </div>
 
