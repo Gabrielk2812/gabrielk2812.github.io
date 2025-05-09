@@ -7,7 +7,7 @@
     <meta name="keywords" content="Gabriel Kokan, gkweb, out of spite, gk3, prodbygk">
     <meta name="description" content="Gabriel Kokan's Portfolio">
     <title>GK WEB</title>
-    <link rel="icon" href="./Black.png">
+    <link rel="icon" href="./assets/Black.png">
     <style>
         .video-background {
             position: fixed;
@@ -33,6 +33,7 @@
             color: white;
             font-family: Arial, sans-serif;
             position: relative;
+            scroll-behavior: auto;
         }
 
         .content-wrapper {
@@ -59,14 +60,9 @@
             height: auto;
         }
 
-        h4 {
-            margin: 20px 0;
-            font-size: 1.5em;
-            text-align: center;
-        }
-
         .announcement h2 {
             text-align: center;
+            margin: 20px 0;
         }
 
         footer {
@@ -79,57 +75,210 @@
             max-width: 800px;
         }
 
-        .terms-dropdown {
-            margin-top: 40px;
-            border-top: 1px solid rgba(255, 255, 255, 0.2);
-            padding: 20px 0;
+        .clothing-store {
+            margin: 40px 0;
             width: 100%;
-            max-width: 600px;
+            max-width: 1200px;
+            padding: 0 20px;
         }
 
-        .terms-dropdown details {
-            cursor: pointer;
-            font-size: 0.9em;
-            color: #888;
+        .clothing-store h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2em;
         }
 
-        .terms-dropdown details[open] {
-            color: white;
+        .clothing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            padding: 0 20px;
         }
 
-        .terms-dropdown summary {
-            outline: none;
-            padding: 10px;
-        }
-
-        .terms-dropdown div {
+        .clothing-item {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
             padding: 15px;
-            text-align: left;
-            font-size: 0.8em;
-            line-height: 1.5;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            margin-top: 10px;
+            text-align: center;
+            cursor: pointer;
         }
 
-        .terms-dropdown strong {
-            display: block;
-            margin: 10px 0 5px;
-            color: #fff;
+        .clothing-image-container {
+            position: relative;
+            width: 100%;
+            height: 250px;
+            margin-bottom: 15px;
         }
 
-        footer span {
-            display: inline-block;
-            line-height: 1.4;
+        .clothing-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 4px;
+            position: absolute;
+            top: 0;
+            left: 0;
         }
 
-        @media (max-width: 768px) {
-            footer {
-                padding: 20px 15px;
-                font-size: 0.7em;
+        .front-img {
+            opacity: 1;
+        }
+
+        .back-img {
+            opacity: 0;
+        }
+
+        @media (hover: hover) {
+            .clothing-item:hover .front-img {
+                opacity: 0;
+            }
+
+            .clothing-item:hover .back-img {
+                opacity: 1;
             }
         }
 
+        .item-name {
+            margin: 15px 0 5px;
+            font-size: 1.1em;
+            color: white;
+        }
+
+        .item-price {
+            color: #ffffff;
+            font-weight: bold;
+        }
+
+        .product-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            padding: 20px;
+            box-sizing: border-box;
+            overflow-y: auto;
+        }
+
+        .modal-content {
+            background: #111;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 30px;
+            border-radius: 8px;
+            position: relative;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .gallery-column {
+            display: grid;
+            grid-template-rows: auto 100px;
+            gap: 20px;
+        }
+
+        .main-image {
+            width: 100%;
+            height: 500px;
+            object-fit: contain;
+            background: #000;
+            border-radius: 4px;
+        }
+
+        .thumbnails {
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+            padding-bottom: 10px;
+        }
+
+        .thumbnail {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            cursor: pointer;
+            border: 2px solid transparent;
+            border-radius: 4px;
+        }
+
+        .thumbnail.active {
+            border-color: #fff;
+        }
+
+        .product-info {
+            color: white;
+        }
+
+        .size-selector {
+            margin: 20px 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+            gap: 10px;
+        }
+
+        .size-option {
+            padding: 10px;
+            background: #222;
+            text-align: center;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        .size-option.selected {
+            background: #444;
+            font-weight: bold;
+        }
+
+        .buy-button {
+            width: 100%;
+            padding: 15px;
+            background: #939393;
+            color: #000;
+            border: none;
+            border-radius: 4px;
+            cursor: not-allowed;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: white;
+            font-size: 30px;
+            cursor: pointer;
+        }
+
         @media (max-width: 768px) {
+            .modal-content {
+                grid-template-columns: 1fr;
+                padding: 15px;
+                gap: 25px;
+            }
+
+            .gallery-column {
+                order: 1;
+            }
+
+            .product-info {
+                order: 2;
+            }
+
+            .main-image {
+                height: 300px;
+            }
+
+            .clothing-grid {
+                grid-template-columns: 1fr;
+                max-width: 400px;
+                margin: 0 auto;
+            }
+
             .albumdisplay {
                 flex-direction: column;
                 gap: 20px;
@@ -139,9 +288,41 @@
                 max-width: 300px;
             }
 
-            h4 {
-                font-size: 1.2em;
-                padding: 0 15px;
+            header img {
+                width: 80% !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .main-image {
+                height: 250px;
+            }
+
+            .product-info h2 {
+                font-size: 1.3em;
+            }
+
+            .size-option {
+                padding: 8px;
+                font-size: 0.9em;
+            }
+        }
+
+        /* Reduced motion preferences */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+
+            .clothing-item {
+                transition: none;
+            }
+
+            .clothing-img {
+                transition: none;
             }
         }
     </style>
@@ -150,18 +331,18 @@
 
 <body>
     <div class="video-background">
-        <video autoplay muted loop playsinline poster="./Black.png">
-            <source src="./oosvis1_2.mp4" type="video/mp4">
+        <video autoplay muted loop playsinline poster="./assets/Black.png">
+            <source src="./assets/oosvis1_2.mp4" type="video/mp4">
         </video>
     </div>
 
     <div class="content-wrapper">
         <header style="text-align: center;">
-            <img src="./oostypo1.png" width="50%">
+            <img src="./assets/oostypo1.png" width="50%">
         </header>
         <div class="albumdisplay">
-            <img src="./out of spite cover 5.jpg" alt="Album cover art">
-            <img src="./out of spite tracklist v3.jpg" alt="Album tracklist">
+            <img src="./assets/out of spite cover 5.jpg" alt="Album cover art">
+            <img src="./assets/out of spite tracklist v3.jpg" alt="Album tracklist">
         </div>
 
         <div class="announcement">
@@ -169,11 +350,243 @@
             <h2>26.5.2025 9 AM CET</h2>
         </div>
 
+        <div class="clothing-store">
+            <h2>PRE ORDER ALBUM MERCH</h2>
+            <div class="clothing-grid">
+                <!-- Clothing items with data-product-id -->
+                <div class="clothing-item" data-product-id="tshirt01">
+                    <div class="clothing-image-container">
+                        <img src="./assets/store/tshirt2_Front.png" class="clothing-img front-img" alt="TShirt Front">
+                        <img src="./assets/store/tshirt2_Back.png" class="clothing-img back-img" alt="TShirt Back">
+                    </div>
+                    <h3 class="item-name">TShirt 01 - Black</h3>
+                    <span class="item-price">$29.99</span>
+                </div>
+
+                <div class="clothing-item" data-product-id="tshirt02">
+                    <div class="clothing-image-container">
+                        <img src="./assets/store/tshirt1_Front.png" class="clothing-img front-img" alt="TShirt Front">
+                        <img src="./assets/store/tshirt1_Back.png" class="clothing-img back-img" alt="TShirt Back">
+                    </div>
+                    <h3 class="item-name">TShirt 02 - Black</h3>
+                    <span class="item-price">$29.99</span>
+                </div>
+
+                <div class="clothing-item" data-product-id="crewneck01">
+                    <div class="clothing-image-container">
+                        <img src="./assets/store/crew1_Front.png" class="clothing-img front-img" alt="CrewNeck Front">
+                        <img src="./assets/store/crew1_Back.png" class="clothing-img back-img" alt="CrewNeck Back">
+                    </div>
+                    <h3 class="item-name">CrewNeck 01 - Black</h3>
+                    <span class="item-price">$34.99</span>
+                </div>
+
+                <div class="clothing-item" data-product-id="longshirt01">
+                    <div class="clothing-image-container">
+                        <img src="./assets/store/long1_Front.png" class="clothing-img front-img" alt="LongShirt Front">
+                        <img src="./assets/store/long1_Back.png" class="clothing-img back-img" alt="LongShirt Back">
+                    </div>
+                    <h3 class="item-name">LongShirt 01 - Black</h3>
+                    <span class="item-price">$34.99</span>
+                </div>
+
+                <div class="clothing-item" data-product-id="longshirt02">
+                    <div class="clothing-image-container">
+                        <img src="./assets/store/long2_Front.png" class="clothing-img front-img" alt="LongShirt Front">
+                        <img src="./assets/store/long2_Back.png" class="clothing-img back-img" alt="LongShirt Back">
+                    </div>
+                    <h3 class="item-name">LongShirt 02 - Black</h3>
+                    <span class="item-price">$34.99</span>
+                </div>
+
+                <div class="clothing-item" data-product-id="zipup01">
+                    <div class="clothing-image-container">
+                        <img src="./assets/store/zipup1_Front.png" class="clothing-img front-img" alt="ZipUp Front">
+                        <img src="./assets/store/zipup1_Back.png" class="clothing-img back-img" alt="ZipUp Back">
+                    </div>
+                    <h3 class="item-name">ZipUp 01 - Black</h3>
+                    <span class="item-price">$34.99</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="product-modal" id="productModal">
+            <div class="modal-content">
+                <span class="close-modal" onclick="closeModal()">&times;</span>
+                <div class="gallery-column">
+                    <img id="mainImage" class="main-image" src="" alt="Main Product Image">
+                    <div class="thumbnails" id="thumbnailsContainer"></div>
+                </div>
+                <div class="product-info">
+                    <h2 id="productName"></h2>
+                    <p id="productDescription"></p>
+                    <div class="size-selector" id="sizeSelector"></div>
+                    <div class="price-section">
+                        <span id="productPrice" class="item-price"></span>
+                        <button class="buy-button" onclick="">PRE ORDER COMING SOON</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <footer>
             <span>&copy; 2025 Gabriel Kokan. All content and materials presented on this website are protected under
                 applicable intellectual property laws. Unauthorized use or reproduction is prohibited.</span>
         </footer>
     </div>
+
+    <script>
+        const products = {
+            'tshirt01': {
+                name: 'TShirt 01 - Black',
+                price: '$29.99',
+                description: 'Premium cotton t-shirt with screen-printed album artwork. Limited edition pre-order item.',
+                sizes: ['S', 'M', 'L', 'XL'],
+                images: [
+                    './assets/store/tshirt2_Front.png',
+                    './assets/store/tshirt2_Back.png'
+                ]
+            },
+            'tshirt02': {
+                name: 'TShirt 02 - Black',
+                price: '$29.99',
+                description: 'Classic black tee with distressed logo print. 100% organic cotton.',
+                sizes: ['S', 'M', 'L', 'XL'],
+                images: [
+                    './assets/store/tshirt1_Front.png',
+                    './assets/store/tshirt1_Back.png'
+                ]
+            },
+            'crewneck01': {
+                name: 'CrewNeck 01 - Black',
+                price: '$34.99',
+                description: 'Heavyweight crewneck sweater with embroidered logo. Pre-order exclusive.',
+                sizes: ['S', 'M', 'L', 'XL'],
+                images: [
+                    './assets/store/crew1_Front.png',
+                    './assets/store/crew1_Back.png'
+                ]
+            },
+            'longshirt01': {
+                name: 'LongShirt 01 - Black',
+                price: '$44.99',
+                description: 'Oversized longline t-shirt with signature sleeve detailing.',
+                sizes: ['S', 'M', 'L', 'XL'],
+                images: [
+                    './assets/store/long1_Front.png',
+                    './assets/store/long1_Back.png'
+                ]
+            },
+            'longshirt02': {
+                name: 'LongShirt 02 - Black',
+                price: '$44.99',
+                description: 'Extended fit tee with contrasting neckline and hem.',
+                sizes: ['S', 'M', 'L', 'XL'],
+                images: [
+                    './assets/store/long2_Front.png',
+                    './assets/store/long2_Back.png'
+                ]
+            },
+            'zipup01': {
+                name: 'ZipUp 01 - Black',
+                price: '$54.99',
+                description: 'Premium zip-up hoodie with signature GK branding.',
+                sizes: ['S', 'M', 'L', 'XL'],
+                images: [
+                    './assets/store/zipup1_Front.png',
+                    './assets/store/zipup1_Back.png'
+                ]
+            }
+        };
+
+        let selectedSize = null;
+        let currentProduct = null;
+
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.clothing-item').forEach(item => {
+                item.addEventListener('click', () => {
+                    const productId = item.dataset.productId;
+                    if (products[productId]) openProduct(productId);
+                });
+            });
+
+            document.getElementById('productModal').addEventListener('click', (e) => {
+                if (e.target === document.getElementById('productModal')) {
+                    closeModal();
+                }
+            });
+        });
+
+        function openProduct(productId) {
+            const product = products[productId];
+            if (!product) return;
+
+            currentProduct = productId;
+            selectedSize = null;
+
+            // Update modal content
+            document.getElementById('productName').textContent = product.name;
+            document.getElementById('productPrice').textContent = product.price;
+            document.getElementById('productDescription').textContent = product.description;
+
+            // Set images
+            const mainImg = document.getElementById('mainImage');
+            mainImg.src = product.images[0];
+
+            const thumbsContainer = document.getElementById('thumbnailsContainer');
+            thumbsContainer.innerHTML = product.images.map((img, index) => `
+                <img class="thumbnail ${index === 0 ? 'active' : ''}" 
+                     src="${img}" 
+                     onclick="changeMainImage(${index})"
+                     alt="Product view ${index + 1}">
+            `).join('');
+
+            // Set sizes
+            const sizeSelector = document.getElementById('sizeSelector');
+            sizeSelector.innerHTML = product.sizes.map(size => `
+                <div class="size-option" 
+                     onclick="selectSize('${size}')"
+                     data-size="${size}">
+                    ${size}
+                </div>
+            `).join('');
+
+            // Show modal
+            document.getElementById('productModal').style.display = 'block';
+        }
+
+        function closeModal() {
+            document.getElementById('productModal').style.display = 'none';
+            selectedSize = null;
+            document.querySelectorAll('.size-option').forEach(option => {
+                option.classList.remove('selected');
+            });
+        }
+
+        function changeMainImage(index) {
+            const product = products[currentProduct];
+            document.getElementById('mainImage').src = product.images[index];
+            document.querySelectorAll('.thumbnail').forEach((thumb, i) => {
+                thumb.classList.toggle('active', i === index);
+            });
+        }
+
+        function selectSize(size) {
+            selectedSize = size;
+            document.querySelectorAll('.size-option').forEach(option => {
+                option.classList.toggle('selected', option.dataset.size === size);
+            });
+        }
+
+        function handlePurchase() {
+            if (!selectedSize) {
+                alert('Please select a size before pre-ordering');
+                return;
+            }
+            const product = products[currentProduct];
+            alert(`Pre-orders are not available yet!\n\n${product.name} (Size: ${selectedSize})\nWill be available for pre-order starting 26.5.2025`);
+        }
+    </script>
 </body>
 
 </html>
