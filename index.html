@@ -75,236 +75,97 @@
             max-width: 800px;
         }
 
-        .clothing-store {
-            margin: 40px 0;
+        .countdown-container {
+            margin: 60px 0;
+            text-align: center;
             width: 100%;
-            max-width: 1200px;
-            padding: 0 20px;
+            max-width: 800px;
         }
 
-        .clothing-store h2 {
-            text-align: center;
+        .countdown-title {
+            font-size: 2.5rem;
             margin-bottom: 30px;
-            font-size: 2em;
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
 
-        .clothing-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            padding: 0 20px;
-        }
-
-        .clothing-item {
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
-            padding: 15px;
-            text-align: center;
-            cursor: pointer;
-        }
-
-        .clothing-image-container {
-            position: relative;
-            width: 100%;
-            height: 250px;
-            margin-bottom: 15px;
-        }
-
-        .clothing-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 4px;
-            position: absolute;
-            top: 0;
-            left: 0;
-        }
-
-        .front-img {
-            opacity: 1;
-        }
-
-        .back-img {
-            opacity: 0;
-        }
-
-        @media (hover: hover) {
-            .clothing-item:hover .front-img {
-                opacity: 0;
-            }
-
-            .clothing-item:hover .back-img {
-                opacity: 1;
-            }
-        }
-
-        .item-name {
-            margin: 15px 0 5px;
-            font-size: 1.1em;
-            color: white;
-        }
-
-        .item-price {
-            color: #ffffff;
-            font-weight: bold;
-        }
-
-        .product-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.9);
-            z-index: 1000;
-            padding: 20px;
-            box-sizing: border-box;
-            overflow-y: auto;
-        }
-
-        .modal-content {
-            background: #111;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 30px;
-            border-radius: 8px;
-            position: relative;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-        }
-
-        .gallery-column {
-            display: grid;
-            grid-template-rows: auto 100px;
-            gap: 20px;
-        }
-
-        .main-image {
-            width: 100%;
-            height: 500px;
-            object-fit: contain;
-            background: #000;
-            border-radius: 4px;
-        }
-
-        .thumbnails {
+        .countdown {
             display: flex;
-            gap: 10px;
-            overflow-x: auto;
-            padding-bottom: 10px;
-        }
-
-        .thumbnail {
-            width: 60px;
-            height: 60px;
-            object-fit: cover;
-            cursor: pointer;
-            border: 2px solid transparent;
-            border-radius: 4px;
-        }
-
-        .thumbnail.active {
-            border-color: #fff;
-        }
-
-        .product-info {
-            color: white;
-        }
-
-        .size-selector {
-            margin: 20px 0;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
-            gap: 10px;
-        }
-
-        .size-option {
-            padding: 10px;
-            background: #222;
-            text-align: center;
-            cursor: pointer;
-            border-radius: 4px;
-        }
-
-        .size-option.selected {
-            background: #444;
-            font-weight: bold;
-        }
-
-        .buy-button {
-            width: 100%;
-            padding: 15px;
-            background: #939393;
-            color: #000;
-            border: none;
-            border-radius: 4px;
-            cursor: not-allowed;
-            font-weight: bold;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
             margin-top: 20px;
         }
 
-        .close-modal {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            color: white;
-            font-size: 30px;
-            cursor: pointer;
+        .countdown-item {
+            display: flex;
+            flex-direction: column;
+            min-width: 120px;
+        }
+
+        .countdown-value {
+            font-size: 3.5rem;
+            font-weight: bold;
+            font-family: 'Arial', sans-serif;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px 15px;
+            border-radius: 8px;
+        }
+
+        .countdown-label {
+            margin-top: 10px;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         @media (max-width: 768px) {
-            .modal-content {
-                grid-template-columns: 1fr;
-                padding: 15px;
-                gap: 25px;
+            .countdown {
+                gap: 15px;
             }
-
-            .gallery-column {
-                order: 1;
+            
+            .countdown-item {
+                min-width: 90px;
             }
-
-            .product-info {
-                order: 2;
+            
+            .countdown-value {
+                font-size: 2.5rem;
             }
-
-            .main-image {
-                height: 300px;
-            }
-
-            .clothing-grid {
-                grid-template-columns: 1fr;
-                max-width: 400px;
-                margin: 0 auto;
-            }
-
-            .albumdisplay {
-                flex-direction: column;
-                gap: 20px;
-            }
-
-            .albumdisplay img {
-                max-width: 300px;
-            }
-
-            header img {
-                width: 80% !important;
+            
+            .countdown-title {
+                font-size: 2rem;
             }
         }
 
         @media (max-width: 480px) {
-            .main-image {
-                height: 250px;
+            .countdown {
+                gap: 8px;
             }
-
-            .product-info h2 {
-                font-size: 1.3em;
+            
+            .countdown-item {
+                min-width: 70px;
             }
-
-            .size-option {
-                padding: 8px;
-                font-size: 0.9em;
+            
+            .countdown-value {
+                font-size: 1.8rem;
+                padding: 8px 10px;
+            }
+            
+            .countdown-title {
+                font-size: 1.5rem;
+            }
+            
+            .albumdisplay {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .albumdisplay img {
+                max-width: 300px;
+            }
+            
+            header img {
+                width: 80% !important;
             }
         }
 
@@ -315,14 +176,6 @@
                 animation-iteration-count: 1 !important;
                 transition-duration: 0.01ms !important;
                 scroll-behavior: auto !important;
-            }
-
-            .clothing-item {
-                transition: none;
-            }
-
-            .clothing-img {
-                transition: none;
             }
         }
     </style>
@@ -350,99 +203,28 @@
             <h2>30.06.2025 9 AM CET</h2>
         </div>
 
-        <div class="clothing-store">
-            <h2>PRE ORDER (COMING SOON) ALBUM MERCH</h2>
-            <div class="clothing-grid">
-                <!-- Clothing items with data-product-id -->
-                <div class="clothing-item" data-product-id="tshirt01">
-                    <div class="clothing-image-container">
-                        <img src="./assets/store/tshirt2_Front.png" class="clothing-img front-img" alt="TShirt Front">
-                        <img src="./assets/store/tshirt2_Back.png" class="clothing-img back-img" alt="TShirt Back">
-                    </div>
-                    <h3 class="item-name">TShirt 01 - Black</h3>
-                    <span class="item-price">€29.99</span>
+        <div class="countdown-container">
+            <h2 class="countdown-title">ALBUM RELEASE COUNTDOWN</h2>
+            <div class="countdown">
+                <div class="countdown-item">
+                    <div id="days" class="countdown-value">00</div>
+                    <div class="countdown-label">Days</div>
                 </div>
-
-                <div class="clothing-item" data-product-id="tshirt02">
-                    <div class="clothing-image-container">
-                        <img src="./assets/store/tshirt1_Front.png" class="clothing-img front-img" alt="TShirt Front">
-                        <img src="./assets/store/tshirt1_Back.png" class="clothing-img back-img" alt="TShirt Back">
-                    </div>
-                    <h3 class="item-name">TShirt 02 - Black</h3>
-                    <span class="item-price">€29.99</span>
+                <div class="countdown-item">
+                    <div id="hours" class="countdown-value">00</div>
+                    <div class="countdown-label">Hours</div>
                 </div>
-
-                <div class="clothing-item" data-product-id="crewneck01">
-                    <div class="clothing-image-container">
-                        <img src="./assets/store/crew1_Front.png" class="clothing-img front-img" alt="CrewNeck Front">
-                        <img src="./assets/store/crew1_Back.png" class="clothing-img back-img" alt="CrewNeck Back">
-                    </div>
-                    <h3 class="item-name">CrewNeck 01 - Black</h3>
-                    <span class="item-price">€44.99</span>
+                <div class="countdown-item">
+                    <div id="minutes" class="countdown-value">00</div>
+                    <div class="countdown-label">Minutes</div>
                 </div>
-
-                <div class="clothing-item" data-product-id="longshirt01">
-                    <div class="clothing-image-container">
-                        <img src="./assets/store/long1_Front.png" class="clothing-img front-img" alt="LongShirt Front">
-                        <img src="./assets/store/long1_Back.png" class="clothing-img back-img" alt="LongShirt Back">
-                    </div>
-                    <h3 class="item-name">LongShirt 01 - Black</h3>
-                    <span class="item-price">€44.99</span>
+                <div class="countdown-item">
+                    <div id="seconds" class="countdown-value">00</div>
+                    <div class="countdown-label">Seconds</div>
                 </div>
-
-                <div class="clothing-item" data-product-id="longshirt02">
-                    <div class="clothing-image-container">
-                        <img src="./assets/store/long2_Front.png" class="clothing-img front-img" alt="LongShirt Front">
-                        <img src="./assets/store/long2_Back.png" class="clothing-img back-img" alt="LongShirt Back">
-                    </div>
-                    <h3 class="item-name">LongShirt 02 - Black</h3>
-                    <span class="item-price">€44.99</span>
-                </div>
-
-                <div class="clothing-item" data-product-id="zipup01">
-                    <div class="clothing-image-container">
-                        <img src="./assets/store/zipup1_Front.png" class="clothing-img front-img" alt="ZipUp Front">
-                        <img src="./assets/store/zipup1_Back.png" class="clothing-img back-img" alt="ZipUp Back">
-                    </div>
-                    <h3 class="item-name">ZipUp 01 - Black</h3>
-                    <span class="item-price">€54.99</span>
-                </div>
-
-                <div class="clothing-item" data-product-id="vinyl">
-                    <div class="clothing-image-container">
-                        <img src="./assets/store/vinyl.png" class="clothing-img front-img" alt="vinyl">
-                        <img src="./assets/store/vinyl.png" class="clothing-img back-img" alt="vinyl">
-                    </div>
-                    <h3 class="item-name">Album Vinyl</h3>
-                    <span class="item-price">€39.99</span>
-                </div>
-
-                <div class="clothing-item" data-product-id="cd">
-                    <div class="clothing-image-container">
-                        <img src="./assets/store/cd.png" class="clothing-img front-img" alt="cd">
-                        <img src="./assets/store/cd.png" class="clothing-img back-img" alt="cd">
-                    </div>
-                    <h3 class="item-name">Album CD</h3>
-                    <span class="item-price">€14.99</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="product-modal" id="productModal">
-            <div class="modal-content">
-                <span class="close-modal" onclick="closeModal()">&times;</span>
-                <div class="gallery-column">
-                    <img id="mainImage" class="main-image" src="" alt="Main Product Image">
-                    <div class="thumbnails" id="thumbnailsContainer"></div>
-                </div>
-                <div class="product-info">
-                    <h2 id="productName"></h2>
-                    <p id="productDescription"></p>
-                    <div class="size-selector" id="sizeSelector"></div>
-                    <div class="price-section">
-                        <span id="productPrice" class="item-price"></span>
-                        <button class="buy-button" onclick="">PRE ORDER COMING SOON</button>
-                    </div>
+                <div class="countdown-item">
+                    <div id="milliseconds" class="countdown-value">000</div>
+                    <div class="countdown-label">Milliseconds</div>
                 </div>
             </div>
         </div>
@@ -454,174 +236,36 @@
     </div>
 
     <script>
-        const products = {
-            'tshirt01': {
-                name: 'TShirt 01 - Black',
-                price: '€29.99',
-                description: 'Premium cotton t-shirt with screen-printed album artwork. Limited edition pre-order item.',
-                sizes: ['S', 'M', 'L', 'XL'],
-                images: [
-                    './assets/store/tshirt2_Front.png',
-                    './assets/store/tshirt2_Back.png'
-                ]
-            },
-            'tshirt02': {
-                name: 'TShirt 02 - Black',
-                price: '€29.99',
-                description: 'Classic black tee with distressed logo print. 100% organic cotton.',
-                sizes: ['S', 'M', 'L', 'XL'],
-                images: [
-                    './assets/store/tshirt1_Front.png',
-                    './assets/store/tshirt1_Back.png'
-                ]
-            },
-            'crewneck01': {
-                name: 'CrewNeck 01 - Black',
-                price: '€34.99',
-                description: 'Heavyweight crewneck sweater with embroidered logo. Pre-order exclusive.',
-                sizes: ['S', 'M', 'L', 'XL'],
-                images: [
-                    './assets/store/crew1_Front.png',
-                    './assets/store/crew1_Back.png'
-                ]
-            },
-            'longshirt01': {
-                name: 'LongShirt 01 - Black',
-                price: '€44.99',
-                description: 'Oversized longline t-shirt with signature sleeve detailing.',
-                sizes: ['S', 'M', 'L', 'XL'],
-                images: [
-                    './assets/store/long1_Front.png',
-                    './assets/store/long1_Back.png'
-                ]
-            },
-            'longshirt02': {
-                name: 'LongShirt 02 - Black',
-                price: '€44.99',
-                description: 'Extended fit tee with contrasting neckline and hem.',
-                sizes: ['S', 'M', 'L', 'XL'],
-                images: [
-                    './assets/store/long2_Front.png',
-                    './assets/store/long2_Back.png'
-                ]
-            },
-            'zipup01': {
-                name: 'ZipUp 01 - Black',
-                price: '€54.99',
-                description: 'Premium zip-up hoodie with signature GK branding.',
-                sizes: ['S', 'M', 'L', 'XL'],
-                images: [
-                    './assets/store/zipup1_Front.png',
-                    './assets/store/zipup1_Back.png'
-                ]
-            },
-            'vinyl': {
-                name: 'Album Vinyl',
-                price: '$39.99',
-                description: 'Album Vinyl with custom printed cover tracklist and print on vinyl',
-                sizes: ['1 x'],
-                images: [
-                    './assets/store/vinyl.png'
-                ]
-            },
-            'cd': {
-                name: 'Album CD',
-                price: '$14.99',
-                description: 'Album CD with custom printed cover tracklist and print on disc',
-                sizes: ['1 x'],
-                images: [
-                    './assets/store/cd.png'
-                ]
-            }
-        };
+        const targetDate = new Date('2025-06-30T07:00:00Z'); // 9 AM CEST is 7 AM UTC
 
-        let selectedSize = null;
-        let currentProduct = null;
+        function updateCountdown() {
+            const now = new Date();
+            const diff = targetDate - now;
 
-        document.addEventListener('DOMContentLoaded', () => {
-            document.querySelectorAll('.clothing-item').forEach(item => {
-                item.addEventListener('click', () => {
-                    const productId = item.dataset.productId;
-                    if (products[productId]) openProduct(productId);
-                });
-            });
-
-            document.getElementById('productModal').addEventListener('click', (e) => {
-                if (e.target === document.getElementById('productModal')) {
-                    closeModal();
-                }
-            });
-        });
-
-        function openProduct(productId) {
-            const product = products[productId];
-            if (!product) return;
-
-            currentProduct = productId;
-            selectedSize = null;
-
-            // Update modal content
-            document.getElementById('productName').textContent = product.name;
-            document.getElementById('productPrice').textContent = product.price;
-            document.getElementById('productDescription').textContent = product.description;
-
-            // Set images
-            const mainImg = document.getElementById('mainImage');
-            mainImg.src = product.images[0];
-
-            const thumbsContainer = document.getElementById('thumbnailsContainer');
-            thumbsContainer.innerHTML = product.images.map((img, index) => `
-                <img class="thumbnail ${index === 0 ? 'active' : ''}" 
-                     src="${img}" 
-                     onclick="changeMainImage(${index})"
-                     alt="Product view ${index + 1}">
-            `).join('');
-
-            // Set sizes
-            const sizeSelector = document.getElementById('sizeSelector');
-            sizeSelector.innerHTML = product.sizes.map(size => `
-                <div class="size-option" 
-                     onclick="selectSize('${size}')"
-                     data-size="${size}">
-                    ${size}
-                </div>
-            `).join('');
-
-            // Show modal
-            document.getElementById('productModal').style.display = 'block';
-        }
-
-        function closeModal() {
-            document.getElementById('productModal').style.display = 'none';
-            selectedSize = null;
-            document.querySelectorAll('.size-option').forEach(option => {
-                option.classList.remove('selected');
-            });
-        }
-
-        function changeMainImage(index) {
-            const product = products[currentProduct];
-            document.getElementById('mainImage').src = product.images[index];
-            document.querySelectorAll('.thumbnail').forEach((thumb, i) => {
-                thumb.classList.toggle('active', i === index);
-            });
-        }
-
-        function selectSize(size) {
-            selectedSize = size;
-            document.querySelectorAll('.size-option').forEach(option => {
-                option.classList.toggle('selected', option.dataset.size === size);
-            });
-        }
-
-        function handlePurchase() {
-            if (!selectedSize) {
-                alert('Please select a size before pre-ordering');
+            if (diff <= 0) {
+                document.getElementById('days').textContent = '00';
+                document.getElementById('hours').textContent = '00';
+                document.getElementById('minutes').textContent = '00';
+                document.getElementById('seconds').textContent = '00';
+                document.getElementById('milliseconds').textContent = '000';
                 return;
             }
-            const product = products[currentProduct];
-            alert(`Pre-orders are not available yet!\n\n${product.name} (Size: ${selectedSize})\nWill be available for pre-order starting 26.5.2025`);
+
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+            const milliseconds = Math.floor(diff % 1000);
+
+            document.getElementById('days').textContent = days.toString().padStart(2, '0');
+            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+            document.getElementById('milliseconds').textContent = milliseconds.toString().padStart(3, '0');
+
+            requestAnimationFrame(updateCountdown);
         }
+        updateCountdown();
     </script>
 </body>
 
